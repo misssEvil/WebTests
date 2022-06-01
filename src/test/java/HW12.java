@@ -230,16 +230,5 @@ public class HW12 extends BaseTest {
         Assert.assertEquals(counter, 6);
     }
 
-    @Test(priority = 12)
-    public void findMaxNumOfComments() {
-        getDriver().get(BASE_URL);
-        getDriver().findElement(By.xpath("//ul[@id='menu']/li[2]/a")).click();
-        WebElement submenuJ = getWait().until(ExpectedConditions.elementToBeClickable(By.linkText("J")));
-        submenuJ.click();
-        WebElement language = getDriver().findElement(By.xpath("//tr/td/a[contains(@href, 'java')]"));
-        language.click();
 
-
-
-    }
 }
