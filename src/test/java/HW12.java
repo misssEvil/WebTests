@@ -4,11 +4,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import java.lang.reflect.Array;
+import runner.BaseTest;
 import java.time.Instant;
-import java.util.List;
-
 
 public class HW12 extends BaseTest {
 
@@ -76,7 +73,6 @@ public class HW12 extends BaseTest {
                 WebElement webElement = getDriver().findElement(By.xpath("//tr[" + i + "]"));
                 if (webElement.isDisplayed()) {
                     counter = i;
-                    //System.out.println(counter);
                     i++;
                 } else {
                     break;
@@ -84,7 +80,6 @@ public class HW12 extends BaseTest {
             }
         } catch (NoSuchElementException exception) {
         }
-
         Assert.assertEquals(counter - 1, 10);
     }
 
@@ -134,7 +129,7 @@ public class HW12 extends BaseTest {
     public void testShakespeareTopRated() throws NoSuchElementException {
         getDriver().get("http://www.99-bottles-of-beer.net/toplist.html");
         WebElement langShakespeare = getDriver().findElement(By.xpath("//tr/td/a[contains(@href,'shake')]"));
-        int counter = 1;
+        int counter = 0;
 
         for (int i = 1; i < 20; i++) {
             try {
@@ -147,7 +142,7 @@ public class HW12 extends BaseTest {
             } catch (NoSuchElementException e) {
             }
         }
-        Assert.assertEquals(counter, 16);
+        Assert.assertEquals(counter-1, 16);
     }
 
     @Test(priority = 9)
@@ -156,8 +151,7 @@ public class HW12 extends BaseTest {
         WebElement esotericRate = getDriver().findElement(By.linkText("Top Rated Esoteric"));
         esotericRate.click();
         WebElement langShakespeare = getDriver().findElement(By.xpath("//tr/td/a[contains(@href,'shake')]"));
-        int counter = 1;
-
+        int counter = 0;
         for (int i = 1; i < 20; i++) {
             try {
                 WebElement element = getDriver().findElement(By.xpath("//tr[" + i + "]/td[2]/a"));
@@ -169,7 +163,7 @@ public class HW12 extends BaseTest {
             } catch (NoSuchElementException e) {
             }
         }
-        Assert.assertEquals(counter, 7);
+        Assert.assertEquals(counter-1, 7);
     }
 
     @Test(priority = 10)
@@ -179,7 +173,6 @@ public class HW12 extends BaseTest {
         esotericRate.click();
         WebElement langShakespeare = getDriver().findElement(By.xpath("//tr/td/a[contains(@href,'shake')]"));
         int counter = 1;
-
         for (int i = 1; i < 20; i++) {
             try {
                 WebElement element = getDriver().findElement(By.xpath("//tr[" + i + "]/td[2]/a"));
@@ -213,7 +206,6 @@ public class HW12 extends BaseTest {
     @Test(priority = 11)
     public void countVersions() throws NoSuchElementException {
         getDriver().get("http://www.99-bottles-of-beer.net/language-java-3.html");
-        // getDriver().get("http://www.99-bottles-of-beer.net/language-game-maker-language-1475.html");
         int counter = 1;
 
         for (int i = 1; i < 100; i++) {
@@ -229,6 +221,5 @@ public class HW12 extends BaseTest {
         }
         Assert.assertEquals(counter, 6);
     }
-
 
 }
